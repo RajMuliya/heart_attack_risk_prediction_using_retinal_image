@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import RetinalImage
+from .models import RetinalImage, PredictionResult
 from tensorflow.keras.models import load_model
 import numpy as np
 from PIL import Image
@@ -42,6 +42,18 @@ def upload_image(request):
                 'probability': float(predictions[i]*100)
             } for i in range(len(label_names))
         }
+
+        pred = PredictionResult.objects.create(
+        image=image_instance,
+        disease_risk_positive=predicted_labels[0],
+        disease_risk_probability=float(predictions[0] * 100),
+        dr_positive=predicted_labels[1],
+        dr_probability=float(predictions[1] * 100),
+        armd_positive=predicted_labels[2],
+        armd_probability=float(predictions[2] * 100),
+        mh_positive=predicted_labels[3],
+        mh_probability=float(predictions[3] * 100),
+        )
 
         context = {
             'image_url': image_instance.image.url,
