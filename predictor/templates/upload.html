@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heart Attack Risk Prediction</title>
+</head>
+<body>
+  <main>
+    <section id="hero-section" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">AI-Powered Heart Attack Risk Prediction</h1>
+          <p class="hero-description">
+            Upload a photo and our advanced AI will analyze your heart attack risk factors, BMI, and more. Early detection saves lives.
+          </p>
+          <div class="hero-buttons">
+            <button id="try-now-btn" class="btn btn-primary">Try It Now</button>
+            <button class="btn btn-outline">Learn More</button>
+          </div>
+        </div>
+        
+
+    <div class="hero-image-container">
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Doctor looking at heart scan">
+        <div class="hero-image-overlay"></div>
+      </div>
+      
+      <div class="feature-badge badge-left">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+        </svg>
+        <span>Early Detection</span>
+      </div>
+      
+      <div class="feature-badge badge-right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+        </svg>
+        <span>AI Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="upload-section" class="upload-section">
+    <div class="container upload-container">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <h2 class="section-title">Upload a Photo for Analysis</h2>
+        <p class="section-description">
+          Our AI model will analyze your photo to detect potential heart attack risk factors.
+        </p>
+
+        <div class="upload-area" id="upload-area">
+          <div class="upload-placeholder" id="upload-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <p>Drag and drop a photo here, or click to browse</p>
+          </div>
+
+          <div class="image-preview" id="image-preview">
+            <img id="preview-img" src="" alt="Preview">
+            <button type="button" id="remove-image-btn" class="remove-image-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Hidden File Input -->
+          <input type="file" name="image" id="file-input" accept="image/*" hidden>
+        </div>
+
+        <button type="submit" id="analyze-btn" class="btn btn-primary" disabled>
+          Analyze Photo
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Upload Your Photo</h3>
+        <p>Upload a clear front-facing photo of yourself.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>AI Analysis</h3>
+        <p>Our ML model analyzes facial & physical features.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Get Results</h3>
+        <p>Receive your heart attack risk assessment & health metrics.</p>
+      </div>
+    </div>
+  </section>
+  
+</main>
+
+  <!-- JavaScript to make upload interactive -->
+  <script>
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const previewImg = document.getElementById('preview-img');
+    const imagePreview = document.getElementById('image-preview');
+    const removeBtn = document.getElementById('remove-image-btn');
+    const analyzeBtn = document.getElementById('analyze-btn');
+
+    // Open file selector when clicking the upload area
+    /* uploadArea.addEventListener('click', () => {
+      fileInput.click();
+    }); */
+
+    // Preview image and enable the button
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          previewImg.src = reader.result;
+          imagePreview.style.display = 'block';
+          analyzeBtn.disabled = false;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Remove selected image
+    removeBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent triggering file dialog
+      fileInput.value = "";
+      previewImg.src = "";
+      imagePreview.style.display = 'none';
+      analyzeBtn.disabled = true;
+    });
+  </script>
+</body>
+</html>
+
+{% endblock %}

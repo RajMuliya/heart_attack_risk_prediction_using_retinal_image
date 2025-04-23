@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+</head>
+<body>
+
+  <h1 style="text-align:center;">Prediction Results</h1>
+
+  <!-- Display the uploaded image -->
+  <div class="results-container">
+    <div class="results-image">
+      <!-- Shows the uploaded image -->
+      <img id="results-img" src="{{ image_url }}" alt="Analyzed image">
+    </div>
+  
+    <div class="results-data">
+      <!-- 1. Heart Attack Risk → Disease_Risk -->
+      <div class="result-card risk-card">
+        <h3>Heart Attack Risk</h3>
+        <div class="risk-meter">
+          <div 
+            id="risk-meter-fill" 
+            class="risk-meter-fill"
+            title="Disease_Risk Probability"
+          ></div>
+        </div>
+        <p id="risk-percentage">
+          {{ results.Disease_Risk.probability|floatformat:2 }}%
+        </p>
+        <p id="risk-description" class="risk-description">
+          {% if results.Disease_Risk.positive %}High risk{% else %}Low risk{% endif %}
+        </p>
+      </div>
+      
+      <!-- 2. BMI → DR -->
+      <div class="result-card">
+        <h3>BMI (Body Mass Index)</h3>
+        <p id="bmi-value" class="result-value">
+          {{ results.DR.probability|floatformat:2 }}%
+        </p>
+        <p id="bmi-category" class="result-category">
+          {% if results.DR.positive %}Positive{% else %}Negative{% endif %}
+        </p>
+      </div>
+      
+      <!-- 3. AMI Indicators → ARMD -->
+      <div class="result-card">
+        <h3>AMI Indicators</h3>
+        <p id="ami-value" class="result-value">
+          {{ results.ARMD.probability|floatformat:2 }}%
+        </p>
+        <p class="result-description">
+          {% if results.ARMD.positive %}Positive{% else %}Negative{% endif %}
+        </p>
+      </div>
+      
+      <!-- 4. Cholesterol Profile → MH -->
+      <div class="result-card">
+        <h3>Cholesterol Profile (Estimated)</h3>
+        <div class="cholesterol-levels">
+          <div class="cholesterol-item">
+            <span>Total:</span>
+            <span id="chol-total">
+              {{ results.MH.probability|floatformat:2 }} mg/dL
+            </span>
+          </div>
+          <div class="cholesterol-item">
+            <span>HDL:</span>
+            <span id="chol-hdl">
+              {% if results.MH.positive %}Elevated{% else %}Normal{% endif %}
+            </span>
+          </div>
+          <div class="cholesterol-item">
+            <span>LDL:</span>
+            <span id="chol-ldl">
+              {% if results.MH.positive %}Elevated{% else %}Normal{% endif %}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Optional: You can add other cards if needed -->
+      
+    </div>
+  </div>
+
+  <!-- Link back to the upload page -->
+  <div style="text-align:center; margin-top:2rem;">
+    <a href="{% url 'upload_image' %}" class="btn">Upload Another Image</a>
+  </div>
+
+  <script>
+    (function() {
+      // Set the width and color of the risk meter based on Disease_Risk probability
+      const fillEl = document.getElementById('risk-meter-fill');
+      const riskPercentage = parseFloat("{{ results.Disease_Risk.probability|floatformat:2 }}") || 0;
+      fillEl.style.width = riskPercentage + "%";
+      
+      if (riskPercentage > 60) {
+        fillEl.style.backgroundColor = '#ef4444'; // red for high risk
+      } else if (riskPercentage > 30) {
+        fillEl.style.backgroundColor = '#f59e0b'; // orange for moderate risk
+      } else {
+        fillEl.style.backgroundColor = '#10b981'; // green for low risk
+      }
+    })();
+  </script>
+  
+</body>
+</html>
+
+{% endblock %}

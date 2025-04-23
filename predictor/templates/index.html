@@ -1,0 +1,139 @@
+{% extends "base.html" %}{% block content %}
+<main>
+      <section id="hero-section" class="hero-section">
+        <div class="container hero-container">
+          <div class="hero-content">
+            <h1 class="hero-title">AI-Powered Heart Attack Risk Prediction</h1>
+            <p class="hero-description">
+              Upload a photo and our advanced AI will analyze your heart attack risk factors, BMI, and more. Early detection saves lives.
+            </p>
+            <div class="hero-buttons">
+              <button id="try-now-btn" class="btn btn-primary">Try It Now</button>
+              <button class="btn btn-outline">Learn More</button>
+            </div>
+          </div>
+          
+
+      <div class="hero-image-container">
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Doctor looking at heart scan">
+          <div class="hero-image-overlay"></div>
+        </div>
+        
+        <div class="feature-badge badge-left">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+          </svg>
+          <span>Early Detection</span>
+        </div>
+        
+        <div class="feature-badge badge-right">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          <span>AI Analysis</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="upload-section" class="upload-section">
+    <div class="container upload-container">
+      <div id="upload-content" class="upload-content">
+        <h2 class="section-title">Upload a Photo for Analysis</h2>
+        <p class="section-description">
+          Our AI model will analyze your photo to detect potential heart attack risk factors.
+        </p>
+        
+        <div class="upload-area" id="upload-area">
+          <div class="upload-placeholder" id="upload-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <p>Drag and drop a photo here, or click to browse</p>
+          </div>
+          <div class="image-preview" id="image-preview">
+            <img id="preview-img" src="" alt="Preview">
+            <button id="remove-image-btn" class="remove-image-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <input type="file" id="file-input" accept="image/*" hidden>
+        </div>
+        
+        <button id="analyze-btn" class="btn btn-primary analyze-btn" disabled>
+          <span id="analyze-text">Analyze Photo</span>
+          <div id="analyze-spinner" class="spinner hidden"></div>
+        </button>
+      </div>
+      
+      <div id="results-section" class="results-section hidden">
+        <div class="results-header">
+          <h2 class="section-title">Analysis Results</h2>
+          <button id="reset-btn" class="btn btn-outline">New Analysis</button>
+        </div>
+        
+        <div class="results-container">
+          <div class="results-image">
+            <img id="results-img" src="" alt="Analyzed image">
+          </div>
+          
+          <div class="results-data">
+            <div class="result-card risk-card">
+              <h3>Heart Attack Risk</h3>
+              <div class="risk-meter">
+                <div id="risk-meter-fill" class="risk-meter-fill"></div>
+              </div>
+              <p id="risk-percentage">0%</p>
+              <p id="risk-description" class="risk-description">Low risk</p>
+            </div>
+            
+            <div class="result-card">
+              <h3>BMI (Body Mass Index)</h3>
+              <p id="bmi-value" class="result-value">0.0</p>
+              <p id="bmi-category" class="result-category">Normal</p>
+            </div>
+            
+            <div class="result-card">
+              <h3>AMI Detection</h3>
+              <p id="ami-value" class="result-value">Negative</p>
+              <p class="result-description">Acute Myocardial Infarction indicators</p>
+            </div>
+            
+            <div class="result-card">
+              <h3>Blood Pressure</h3>
+              <p id="bp-value" class="result-value">120/80 mmHg</p>
+              <p id="bp-category" class="result-category">Normal</p>
+            </div>
+            
+            <div class="result-card">
+              <h3>Cholesterol Levels</h3>
+              <div class="cholesterol-levels">
+                <div class="cholesterol-item">
+                  <span>Total:</span>
+                  <span id="chol-total">0 mg/dL</span>
+                </div>
+                <div class="cholesterol-item">
+                  <span>HDL:</span>
+                  <span id="chol-hdl">0 mg/dL</span>
+                </div>
+                <div class="cholesterol-item">
+                  <span>LDL:</span>
+                  <span id="chol-ldl">0 mg/dL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock %}
+

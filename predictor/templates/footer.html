@@ -1,0 +1,71 @@
+{% load static %}
+<footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <div class="footer-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+            </svg>
+            <span class="logo-text">CardioLens</span>
+          </div>
+          <p class="footer-description">
+            Advanced AI technology for heart health risk assessment and early detection.
+          </p>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Product</h3>
+          <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        
+        {% comment %} <div class="footer-column">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">HIPAA Compliance</a></li>
+          </ul>
+        </div> {% endcomment %}
+
+        <div class="footer-column">
+          <h3 style='visibility:hidden'>Legal</h3>
+          <ul>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year"></span> CardioLens. All rights reserved.</p>
+        <p><span class="beta-badge">BETA</span> This is a demo application for educational purposes only. Not a medical device.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast hidden">
+    <div class="toast-content">
+      <span id="toast-message"></span>
+    </div>
+  </div>
+
+  <script src="/static/JS/script.js"></script>
+</body>
+</html>
