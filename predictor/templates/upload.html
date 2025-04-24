@@ -19,7 +19,8 @@
           </p>
           <div class="hero-buttons">
             <button id="try-now-btn" class="btn btn-primary">Try It Now</button>
-            <button class="btn btn-outline">Learn More</button>
+            {% comment %} <button class="btn btn-outline">Learn More</button> {% endcomment %}
+            <a class="btn btn-outline" href="{% url 'how-it-works' %}">Learn More</a>
           </div>
         </div>
         

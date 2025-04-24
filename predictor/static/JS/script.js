@@ -105,6 +105,35 @@ document.addEventListener('DOMContentLoaded', function() {
         toast.classList.add('hidden');
       }, 3000);
     }
+    
+    
+
+
+
+
   
+
+  // Handle file input change
+  // fileInput.addEventListener('change', () => {
+  //   const file = fileInput.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       previewImg.src = reader.result;
+  //       imagePreview.style.display = 'block';
+  //       analyzeBtn.disabled = false;
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // });
+
+  // Remove image
+  // removeImageBtn.addEventListener('click', (e) => {
+  //   e.stopPropagation();
+  //   fileInput.value = "";
+  //   previewImg.src = "";
+  //   imagePreview.style.display = 'none';
+  //   analyzeBtn.disabled = true;
+  // });
 
 });

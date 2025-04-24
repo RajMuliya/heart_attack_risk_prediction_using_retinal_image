@@ -14,7 +14,9 @@
   <div class="results-container">
     <div class="results-image">
       <!-- Shows the uploaded image -->
-      <img id="results-img" src="{{ image_url }}" alt="Analyzed image">
+      {% comment %} <img id="results-img" src="{{ image_url }}" alt="Analyzed image"> {% endcomment %}
+      <img style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);" id="results-img" src="data:image/png;base64,{{ image_base64 }}" alt="Uploaded Image" />
+
     </div>
   
     <div class="results-data">
