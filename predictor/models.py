@@ -10,7 +10,7 @@ class PredictionResult(models.Model):
     predicted_at = models.DateTimeField(auto_now_add=True)
 
     # Disease Risk
-    disease_risk_positive = models.BooleanField()
+    disease_risk_positive1 = models.BooleanField()
     disease_risk_probability = models.FloatField()
 
     # Diabetic Retinopathy (DR)
@@ -24,3 +24,7 @@ class PredictionResult(models.Model):
     # MH
     mh_positive = models.BooleanField()
     mh_probability = models.FloatField()
+
+    # DR
+    dn_positive = models.BooleanField(default=False)
+    dn_probability = models.FloatField(default=False)

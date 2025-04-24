@@ -18,7 +18,7 @@
     </div>
   
     <div class="results-data">
-      <!-- 1. Heart Attack Risk → Disease_Risk -->
+      <!-- 1. Disease_Risk -->
       <div class="result-card risk-card">
         <h3>Heart Attack Risk</h3>
         <div class="risk-meter">
@@ -36,9 +36,9 @@
         </p>
       </div>
       
-      <!-- 2. BMI → DR -->
+      <!-- 2.DR -->
       <div class="result-card">
-        <h3>BMI (Body Mass Index)</h3>
+        <h3>DR  (Diabetic Retinopathy)</h3>
         <p id="bmi-value" class="result-value">
           {{ results.DR.probability|floatformat:2 }}%
         </p>
@@ -47,9 +47,9 @@
         </p>
       </div>
       
-      <!-- 3. AMI Indicators → ARMD -->
+      <!-- 3.ARMD -->
       <div class="result-card">
-        <h3>AMI Indicators</h3>
+        <h3>ARMD (Age-Related Macular Degeneration)</h3>
         <p id="ami-value" class="result-value">
           {{ results.ARMD.probability|floatformat:2 }}%
         </p>
@@ -58,32 +58,27 @@
         </p>
       </div>
       
-      <!-- 4. Cholesterol Profile → MH -->
+      <!-- 4. MH -->
       <div class="result-card">
-        <h3>Cholesterol Profile (Estimated)</h3>
-        <div class="cholesterol-levels">
-          <div class="cholesterol-item">
-            <span>Total:</span>
-            <span id="chol-total">
-              {{ results.MH.probability|floatformat:2 }} mg/dL
-            </span>
-          </div>
-          <div class="cholesterol-item">
-            <span>HDL:</span>
-            <span id="chol-hdl">
-              {% if results.MH.positive %}Elevated{% else %}Normal{% endif %}
-            </span>
-          </div>
-          <div class="cholesterol-item">
-            <span>LDL:</span>
-            <span id="chol-ldl">
-              {% if results.MH.positive %}Elevated{% else %}Normal{% endif %}
-            </span>
-          </div>
-        </div>
+        <h3>MH (Macular Hole)</h3>
+        <p id="ami-value" class="result-value">
+          {{ results.MH.probability|floatformat:2 }}%
+        </p>
+        <p class="result-description">
+          {% if results.MH.positive %}Positive{% else %}Negative{% endif %}
+        </p>
       </div>
-
-      <!-- Optional: You can add other cards if needed -->
+      
+      <!-- 5. DN  -->
+      <div class="result-card">
+        <h3>DN (Diabetic Neuropathy)</h3>
+        <p id="ami-value" class="result-value">
+          {{ results.DN.probability|floatformat:2 }}%
+        </p>
+        <p class="result-description">
+          {% if results.DN.positive %}Positive{% else %}Negative{% endif %}
+        </p>
+      </div>
       
     </div>
   </div>
@@ -92,6 +87,8 @@
   <div style="text-align:center; margin-top:2rem;">
     <a href="{% url 'upload_image' %}" class="btn">Upload Another Image</a>
   </div>
+
+
 
   <script>
     (function() {

@@ -7,6 +7,7 @@
     <title>CardioLens - Heart Attack Risk Prediction</title>
     <meta name="description" content="AI-powered heart attack risk prediction tool using photo analysis" />
     <link rel="stylesheet" href="/static/CSS/styles.css">
+    <link rel="stylesheet" href="/static/CSS/secondary_stylesheet.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   </head>
   <body>
@@ -22,11 +23,12 @@
       </a>
         
         <nav class="nav-menu">
-          <a href="#" class="nav-link">How it Works</a>
-          <a href="#" class="nav-link">About</a>
-          <a href="#" class="nav-link">FAQ</a>
+          <a href="{% url 'how-it-works' %}" class="nav-link">How it Works</a>
+          <a href="{% url 'about' %}" class="nav-link">About</a>
+          <a href="{% url 'faq' %}" class="nav-link">FAQ</a>
         </nav>
         
-        <button class="btn btn-outline">Contact Us</button>
+        {% comment %} <button class="btn btn-outline">Contact Us</button> {% endcomment %}
+        <a href='tel:+918460231331' class="btn btn-outline">Contact Us</a>
       </div>
     </header>
