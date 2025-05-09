@@ -1,19 +1,15 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from .models import PredictionResult
 from tensorflow.keras.models import load_model
 import numpy as np
 from PIL import Image
 import cv2
 import base64
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-import re
 from io import BytesIO
 
 # Load the model once when the server starts
-MODEL_PATH = 'E:/Project/Material/Code/multi_label_heart_risk_model_second.keras'  # Update this path
+MODEL_PATH = 'E:\Project\Heart_attack_prediction\Material\Code\multi_label_heart_risk_model_second.keras'  # Update this path
 model = load_model(MODEL_PATH)
 label_names = ["Disease_Risk", "DR", "ARMD", "MH","DN"]
 
