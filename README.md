@@ -1,22 +1,22 @@
-# ❤️ Heart Attack Risk Prediction from Retinal Images
+# Heart Attack Risk Prediction from Retinal Images
 
 **Predict heart attack risk using non-invasive retinal fundus image analysis and machine learning.**
 
 ---
 
-## 📌 Overview
+## Overview
 
 This project uses retinal image features to estimate heart attack risk.  
 It includes:
 
-- ✅ Image preprocessing and vessel feature extraction  
-- ✅ Machine learning model training  
-- ✅ Risk prediction from new images  
-- ✅ Visualization of vessel segmentation  
+- Image preprocessing and vessel feature extraction  
+- Machine learning model training  
+- Risk prediction from new images  
+- Visualization of vessel segmentation  
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 heart_attack_risk_prediction_using_retinal_image/
@@ -45,7 +45,7 @@ heart_attack_risk_prediction_using_retinal_image/
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 1. **Clone the repository**
 
@@ -69,7 +69,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🗂️ Data Setup
+## Data Setup
 
 1. Add your images to the `dataset/` folder:
 
@@ -84,7 +84,7 @@ dataset/
 
 ---
 
-## 🔍 Preprocess Images
+## Preprocess Images
 
 Extract features from images:
 
@@ -96,7 +96,7 @@ This step uses `image_processing.py` to extract vessel-related features.
 
 ---
 
-## 🧠 Train the Model
+## Train the Model
 
 ```bash
 python train_model.py
@@ -110,7 +110,7 @@ This will:
 
 ---
 
-## 🤖 Predict from Image
+## Predict from Image
 
 ```bash
 python predict.py --image test_images/sample.jpg
@@ -120,7 +120,7 @@ Outputs the **predicted heart attack risk score** (e.g. 0.72 means 72% risk).
 
 ---
 
-## 🧪 Quick Test CLI
+## Quick Test CLI
 
 ```bash
 python test.py --image test_images/sample.jpg
@@ -130,7 +130,7 @@ Shows result and risk confidence via terminal.
 
 ---
 
-## 🎨 Visualize Vessel Features
+## Visualize Vessel Features
 
 To highlight retinal vessels from an input image:
 
@@ -140,46 +140,39 @@ python visualize.py   --input test_images/sample.jpg   --output output/vessel_se
 
 ---
 
-## 📊 Scientific Background
 
-Several studies show that **retinal vascular morphology** reflects cardiovascular health.  
-For instance, *Poplin et al.* (2018, Nature Biomedical Engineering) predicted cardiac events using fundus images with AUC ≈ 0.70.
-
----
-
-## 🚀 Possible Extensions
+##  Possible Extensions
 
 - Add deep learning (CNN, transfer learning)
-- Deploy using Flask/Django + Docker
+- Deploy using Flask/Django
 - Add patient metadata (age, BP, etc.)
 - Integrate Grad-CAM for explainability
 
 ---
 
-## 🧰 Troubleshooting
+## Troubleshooting
 
-- ⚠️ `FileNotFoundError`: Check file paths in `config.yaml`  
-- 🖼 Image errors? Use `.jpg` or `.png` only  
-- 🧠 Model mismatch? Re-run preprocessing and training  
+- `FileNotFoundError`: Check file paths in `config.yaml`  
+- Image errors? Use `.jpg` or `.png` only  
+- Model mismatch? Re-run preprocessing and training  
 
 ---
 
-## 📝 License
+## License
 
 This project is under the **MIT License**.  
 See `LICENSE` for details.
 
 ---
 
-## 🙋‍♂️ Contact
+## Contact
 
 **Author**: Raj Muliya  
-📧 Email: `raj.muliya@example.com`  
-🔗 GitHub: [@RajMuliya](https://github.com/RajMuliya)
+📧 Email: `raj.muliya0@gmail.com`  
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repo  
 2. Create a feature branch: `git checkout -b feature-name`  
@@ -188,4 +181,4 @@ See `LICENSE` for details.
 
 ---
 
-**⭐ If you found this useful, please star the repo!**
+** If you found this useful, please star the repo!**
