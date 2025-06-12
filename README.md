@@ -18,32 +18,30 @@ It includes:
 
 ## 📁 Project Structure
 
+```
 heart_attack_risk_prediction_using_retinal_image/
-├── config.yaml # Configuration for paths & parameters
-├── dataset/
-│ ├── train/ # Training images
-│ ├── test/ # Testing images
-│ └── labels.csv # Image IDs and corresponding labels
+├── config.yaml                # Configuration for paths & parameters
+├── dataset/                  
+│   ├── train/                # Training images
+│   ├── test/                 # Testing images
+│   └── labels.csv            # Image IDs and corresponding labels
 ├── models/
-│ └── model.pkl # Trained machine learning model
+│   └── model.pkl             # Trained machine learning model
 ├── test_images/
-│ └── sample.jpg # Test image for demo prediction
+│   └── sample.jpg            # Test image for demo prediction
 ├── output/
-│ └── vessel_segmentation.png # Visualization output
+│   └── vessel_segmentation.png  # Visualization output
 ├── utils/
-│ └── image_processing.py # Feature extraction utilities
-├── preprocess.py # Preprocess & feature extraction script
-├── train_model.py # Train ML model
-├── predict.py # Predict risk from image
-├── visualize.py # Generate vessel segmentation visual
-├── test.py # CLI prediction test
-├── requirements.txt # Required Python packages
-├── LICENSE # MIT License
-└── README.md # You're reading it!
-
-yaml
-Copy
-Edit
+│   └── image_processing.py   # Feature extraction utilities
+├── preprocess.py             # Preprocess & feature extraction script
+├── train_model.py            # Train ML model
+├── predict.py                # Predict risk from image
+├── visualize.py              # Generate vessel segmentation visual
+├── test.py                   # CLI prediction test
+├── requirements.txt          # Required Python packages
+├── LICENSE                   # MIT License
+└── README.md                 # You're reading it!
+```
 
 ---
 
@@ -51,113 +49,143 @@ Edit
 
 1. **Clone the repository**
 
-
+```bash
 git clone https://github.com/RajMuliya/heart_attack_risk_prediction_using_retinal_image.git
 cd heart_attack_risk_prediction_using_retinal_image
-Create a virtual environment
+```
 
-bash
-Copy
-Edit
+2. **Create a virtual environment**
+
+```bash
 python3 -m venv venv
 source venv/bin/activate      # On Windows: venv\Scripts\activate
-Install dependencies
+```
 
-bash
-Copy
-Edit
+3. **Install dependencies**
+
+```bash
 pip install -r requirements.txt
-🗂️ Data Setup
-Add your images to the dataset/ folder:
+```
 
-bash
-Copy
-Edit
+---
+
+## 🗂️ Data Setup
+
+1. Add your images to the `dataset/` folder:
+
+```
 dataset/
 ├── train/
 ├── test/
 └── labels.csv   # Format: image_id,label (0: no risk, 1: at risk)
-Edit config.yaml with the correct paths to images and outputs.
+```
 
-🔍 Preprocess Images
+2. Edit `config.yaml` with the correct paths to images and outputs.
+
+---
+
+## 🔍 Preprocess Images
+
 Extract features from images:
 
-bash
-Copy
-Edit
+```bash
 python preprocess.py
-This step uses image_processing.py to extract vessel-related features.
+```
 
-🧠 Train the Model
-bash
-Copy
-Edit
+This step uses `image_processing.py` to extract vessel-related features.
+
+---
+
+## 🧠 Train the Model
+
+```bash
 python train_model.py
+```
+
 This will:
 
-Load preprocessed features
+- Load preprocessed features
+- Train a classifier (Random Forest, etc.)
+- Save the model as `models/model.pkl`
 
-Train a classifier (Random Forest, etc.)
+---
 
-Save the model as models/model.pkl
+## 🤖 Predict from Image
 
-🤖 Predict from Image
-bash
-Copy
-Edit
+```bash
 python predict.py --image test_images/sample.jpg
-Outputs the predicted heart attack risk score (e.g. 0.72 means 72% risk).
+```
 
-🧪 Quick Test CLI
-bash
-Copy
-Edit
+Outputs the **predicted heart attack risk score** (e.g. 0.72 means 72% risk).
+
+---
+
+## 🧪 Quick Test CLI
+
+```bash
 python test.py --image test_images/sample.jpg
+```
+
 Shows result and risk confidence via terminal.
 
-🎨 Visualize Vessel Features
+---
+
+## 🎨 Visualize Vessel Features
+
 To highlight retinal vessels from an input image:
 
-bash
-Copy
-Edit
-python visualize.py \
-  --input test_images/sample.jpg \
-  --output output/vessel_segmentation.png
-📊 Scientific Background
-Several studies show that retinal vascular morphology reflects cardiovascular health.
-For instance, Poplin et al. (2018, Nature Biomedical Engineering) predicted cardiac events using fundus images with AUC ≈ 0.70.
+```bash
+python visualize.py   --input test_images/sample.jpg   --output output/vessel_segmentation.png
+```
 
-🚀 Possible Extensions
-Add deep learning (CNN, transfer learning)
+---
 
-Deploy using Flask/Django + Docker
+## 📊 Scientific Background
 
-Add patient metadata (age, BP, etc.)
+Several studies show that **retinal vascular morphology** reflects cardiovascular health.  
+For instance, *Poplin et al.* (2018, Nature Biomedical Engineering) predicted cardiac events using fundus images with AUC ≈ 0.70.
 
-Integrate Grad-CAM for explainability
+---
 
-🧰 Troubleshooting
-⚠️ FileNotFoundError: Check file paths in config.yaml
+## 🚀 Possible Extensions
 
-🖼 Image errors? Use .jpg or .png only
+- Add deep learning (CNN, transfer learning)
+- Deploy using Flask/Django + Docker
+- Add patient metadata (age, BP, etc.)
+- Integrate Grad-CAM for explainability
 
-🧠 Model mismatch? Re-run preprocessing and training
+---
 
-📝 License
-This project is under the MIT License.
-See LICENSE for details.
+## 🧰 Troubleshooting
 
-🙋‍♂️ Contact
-Author: Raj Muliya
-📧 Email: raj.muliya@example.com
-🔗 GitHub: @RajMuliya
+- ⚠️ `FileNotFoundError`: Check file paths in `config.yaml`  
+- 🖼 Image errors? Use `.jpg` or `.png` only  
+- 🧠 Model mismatch? Re-run preprocessing and training  
 
-🤝 Contributing
-Fork the repo
+---
 
-Create a feature branch: git checkout -b feature-name
+## 📝 License
 
-Commit and push: git commit -m "Feature"
+This project is under the **MIT License**.  
+See `LICENSE` for details.
 
-Open a pull request
+---
+
+## 🙋‍♂️ Contact
+
+**Author**: Raj Muliya  
+📧 Email: `raj.muliya@example.com`  
+🔗 GitHub: [@RajMuliya](https://github.com/RajMuliya)
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repo  
+2. Create a feature branch: `git checkout -b feature-name`  
+3. Commit and push: `git commit -m "Feature"`  
+4. Open a pull request
+
+---
+
+**⭐ If you found this useful, please star the repo!**
