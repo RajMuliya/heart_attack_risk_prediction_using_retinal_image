@@ -1,10 +1,5 @@
 # Heart Attack Risk Prediction using Retinal Images
 
-<div align="center">
-  <img src="static/demo.gif" alt="Project Demo" width="700">
-  <p><em>Web interface showing retinal scan analysis and risk prediction</em></p>
-</div>
-
 ## Overview
 This innovative deep learning project predicts heart attack risk by analyzing retinal scans - a non-invasive window into cardiovascular health. By examining subtle patterns in retinal blood vessels, our CNN model identifies early warning signs of cardiac risk factors without traditional invasive tests.
 
