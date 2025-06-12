@@ -51,7 +51,7 @@ Edit
 
 1. **Clone the repository**
 
-```bash
+
 git clone https://github.com/RajMuliya/heart_attack_risk_prediction_using_retinal_image.git
 cd heart_attack_risk_prediction_using_retinal_image
 Create a virtual environment
